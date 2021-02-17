@@ -1,0 +1,6 @@
+main: xyz.minecrossing.nookcore.Main
+name: NookCore
+version: ${project.version}
+api-version: 1.13
+author: TheMGRF
+description: Central plugin for MineCrossing
