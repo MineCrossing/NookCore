@@ -37,7 +37,7 @@ public class WorldListener implements Listener {
         int logins = player.getStatistic(Statistic.LEAVE_GAME) + 1;
 
         Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
-            PlayerManager.savePlayer(new MinePlayer(player, time, level, kills, deaths, 0, 0, logins, 0));
+            PlayerManager.savePlayer(new MinePlayer(player.getUniqueId(), player.getName(), time, level, kills, deaths, 0, 0, logins, 0));
         });
     }
 

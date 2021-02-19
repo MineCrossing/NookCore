@@ -1,15 +1,17 @@
 package xyz.minecrossing.nookcore.players;
 
-import org.bukkit.entity.Player;
+import java.util.UUID;
 
 public class MinePlayer {
 
-    private final Player player;
+    private final UUID uuid;
+    private final String name;
     private final float playTime;
     private final int level, kills, deaths, wins, losses, logins, quests;
 
-    public MinePlayer(Player player, float playTime, int level, int kills, int deaths, int wins, int losses, int logins, int quests) {
-        this.player = player;
+    public MinePlayer(UUID uuid, String name, float playTime, int level, int kills, int deaths, int wins, int losses, int logins, int quests) {
+        this.uuid = uuid;
+        this.name = name;
         this.playTime = playTime;
         this.level = level;
         this.kills = kills;
@@ -20,8 +22,12 @@ public class MinePlayer {
         this.quests = quests;
     }
 
-    public Player getPlayer() {
-        return player;
+    public UUID getUUID() {
+        return uuid;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public float getPlayTime() {

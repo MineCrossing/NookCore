@@ -9,6 +9,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import xyz.minecrossing.coreutilities.Logger;
 import xyz.minecrossing.databaseconnector.DatabaseConnector;
 import xyz.minecrossing.databaseconnector.DatabaseDetails;
+import xyz.minecrossing.nookcore.commands.AddManyPlayersDataCommand;
+import xyz.minecrossing.nookcore.commands.AddPlayerDataCommand;
 import xyz.minecrossing.nookcore.commands.FlyCommand;
 import xyz.minecrossing.nookcore.listeners.ChatListener;
 import xyz.minecrossing.nookcore.listeners.WorldListener;
@@ -49,6 +51,8 @@ public class Main extends JavaPlugin {
     private void registerCommands() {
         PaperCommandManager pcm = new PaperCommandManager(this);
         pcm.registerCommand(new FlyCommand());
+        pcm.registerCommand(new AddPlayerDataCommand());
+        pcm.registerCommand(new AddManyPlayersDataCommand());
     }
 
 }
