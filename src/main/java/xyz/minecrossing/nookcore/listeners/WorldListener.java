@@ -12,6 +12,7 @@ import org.bukkit.event.entity.EntityDropItemEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class WorldListener implements Listener {
@@ -35,6 +36,11 @@ public class WorldListener implements Listener {
     public void onPlace(BlockPlaceEvent event) {
         if (event.getPlayer().isOp()) return;
 
+        event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onEntityInteract(PlayerInteractEntityEvent event) {
         event.setCancelled(true);
     }
 
