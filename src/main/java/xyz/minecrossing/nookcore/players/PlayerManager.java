@@ -17,8 +17,6 @@ public class PlayerManager {
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
                 "ON DUPLICATE KEY UPDATE name = name, time = time, level = level, kills = kills, deaths = deaths, wins = wins, losses = losses, logins = logins, quests = quests";
 
-        System.out.println(sql);
-
         try (Connection con = DatabaseConnector.getInstance().getConnection("minecrossing")) {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, player.getUUID().toString());

@@ -27,14 +27,6 @@ public class Main extends JavaPlugin {
 
         registerEvents(new ChatListener(), new WorldListener());
         registerCommands();
-
-        DatabaseConnector.getInstance().addDatabase(new DatabaseDetails(
-                "127.0.0.1",
-                3306,
-                "minecrossing",
-                "minecrossing",
-                "JwdGCtfQMuazmTRTWgXQ2kZ3CdVzkSgG"
-        ));
     }
 
     public static Main getInstance() {
