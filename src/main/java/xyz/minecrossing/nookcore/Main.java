@@ -2,18 +2,18 @@ package xyz.minecrossing.nookcore;
 
 import co.aikar.commands.PaperCommandManager;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.minecrossing.coreutilities.Logger;
-import xyz.minecrossing.databaseconnector.DatabaseConnector;
-import xyz.minecrossing.databaseconnector.DatabaseDetails;
 import xyz.minecrossing.nookcore.commands.AddManyPlayersDataCommand;
 import xyz.minecrossing.nookcore.commands.AddPlayerDataCommand;
 import xyz.minecrossing.nookcore.commands.FlyCommand;
-import xyz.minecrossing.nookcore.listeners.ChatListener;
+import xyz.minecrossing.nookcore.listeners.GameChatListener;
+import xyz.minecrossing.nookcore.listeners.WebChatListener;
 import xyz.minecrossing.nookcore.listeners.WorldListener;
+import xyz.minecrossing.redisapi.RedisAPI;
+import xyz.minecrossing.redisapi.redis.RedisConnector;
 
 public class Main extends JavaPlugin {
 
@@ -25,8 +25,20 @@ public class Main extends JavaPlugin {
 
         Logger.info("We're live bois");
 
-        registerEvents(new ChatListener(), new WorldListener());
+        registerEvents(new GameChatListener(), new WorldListener());
         registerCommands();
+
+        RedisAPI redisAPI = RedisAPI.getRedisAPI();
+        redisAPI.initialize();
+
+        RedisConnector redisConnector = redisAPI.getRedisConnector();
+        redisConnector.listenForChannel("webChat", new WebChatListener());
+    }
+
+    @Override
+    public void onDisable() {
+        RedisAPI redisAPI = RedisAPI.getRedisAPI();
+        redisAPI.shutdown();
     }
 
     public static Main getInstance() {
