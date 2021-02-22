@@ -64,10 +64,69 @@ public class PlayerManager {
     }
 
     public static List<String> getNames() {
-        String names = "name1\n" +
-                "name2\n" +
-                "name3\n" +
-                "name4\n";
+        String names = "mossyresult\n" +
+                "arthropodsturban\n" +
+                "downdazzling\n" +
+                "continentforefinger\n" +
+                "spaceplumber\n" +
+                "garlicfalling\n" +
+                "grubbywed\n" +
+                "piesvolunteer\n" +
+                "patsyrare\n" +
+                "rowerinvasion\n" +
+                "avoidwoodcock\n" +
+                "rainframework\n" +
+                "waggishcalamitous\n" +
+                "killincisive\n" +
+                "handybroccoli\n" +
+                "ramennap\n" +
+                "kosheraustrian\n" +
+                "megareference\n" +
+                "deliverstretch\n" +
+                "relayseven\n" +
+                "fanlargely\n" +
+                "lyricaltheater\n" +
+                "disastrousnearly\n" +
+                "lividforemast\n" +
+                "subtlelopsided\n" +
+                "wiltedfroze\n" +
+                "peacechildish\n" +
+                "poontangaccess\n" +
+                "thumbsupconclusion\n" +
+                "philipswrack\n" +
+                "recoverroe\n" +
+                "operatebrown\n" +
+                "showerassure\n" +
+                "framesnorkling\n" +
+                "jovialkindly\n" +
+                "dressingriptide\n" +
+                "hockeybreak\n" +
+                "dangeroustempt\n" +
+                "shoemakerbogus\n" +
+                "describewilling\n" +
+                "unlockadvocate\n" +
+                "aggressiveloser\n" +
+                "fearfulcrumble\n" +
+                "idolizedethereal\n" +
+                "belatedperky\n" +
+                "gymnasiumpattern\n" +
+                "anorakcoloured\n" +
+                "shoulderedfabric\n" +
+                "fairleadoptimism\n" +
+                "gameinvincible\n" +
+                "mindlessgrowing\n" +
+                "acrossrichness\n" +
+                "rostrumhappen\n" +
+                "growlcranky\n" +
+                "twangelliptical\n" +
+                "picklesguide\n" +
+                "saplingroom\n" +
+                "teammateherald\n" +
+                "shellmuseum\n" +
+                "nervousswitch\n" +
+                "tosssake\n" +
+                "weepingoriginally\n" +
+                "impalacartier";
 
         return Arrays.asList(names.split("\n"));
     }

@@ -12,8 +12,11 @@ import xyz.minecrossing.nookcore.commands.FlyCommand;
 import xyz.minecrossing.nookcore.listeners.GameChatListener;
 import xyz.minecrossing.nookcore.listeners.WebChatListener;
 import xyz.minecrossing.nookcore.listeners.WorldListener;
+import xyz.minecrossing.nookcore.utils.ChatGenerator;
 import xyz.minecrossing.redisapi.RedisAPI;
 import xyz.minecrossing.redisapi.redis.RedisConnector;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main extends JavaPlugin {
 
@@ -33,6 +36,10 @@ public class Main extends JavaPlugin {
 
         RedisConnector redisConnector = redisAPI.getRedisConnector();
         redisConnector.listenForChannel("webChat", new WebChatListener());
+
+        // Start chat generator with random intervals
+        ChatGenerator generator = new ChatGenerator();
+        generator.runTaskTimer(this, 0, generator.getTime());
     }
 
     @Override
