@@ -2,6 +2,7 @@ package xyz.minecrossing.nookcore.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
+import xyz.minecrossing.nookcore.Main;
 import xyz.minecrossing.nookcore.players.PlayerManager;
 import xyz.minecrossing.redisapi.RedisAPI;
 
@@ -11,18 +12,20 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class ChatGenerator extends BukkitRunnable {
 
+    private static final long DELAY = 100;
+
     @Override
     public void run() {
         String name = PlayerManager.getNames().get(ThreadLocalRandom.current().nextInt(PlayerManager.getNames().size()));
         String message = getMessages().get(ThreadLocalRandom.current().nextInt(getMessages().size()));
 
         String result = name + ": " + message;
-        RedisAPI.getRedisAPI().getRedisConnector().getConnection().publish("gameChat", result);
+        Main.getInstance().getRedisConnection().publish("gameChat", result);
         Bukkit.broadcastMessage(result);
     }
 
     public long getTime() {
-        return ThreadLocalRandom.current().nextInt(100);
+        return DELAY;
     }
 
     public static List<String> getMessages() {

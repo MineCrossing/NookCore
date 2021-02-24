@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import redis.clients.jedis.Jedis;
 import xyz.minecrossing.coreutilities.Logger;
 import xyz.minecrossing.nookcore.commands.AddManyPlayersDataCommand;
 import xyz.minecrossing.nookcore.commands.AddPlayerDataCommand;
@@ -22,6 +23,8 @@ public class Main extends JavaPlugin {
 
     private static Main instance;
 
+    private Jedis redisConnection;
+
     @Override
     public void onEnable() {
         instance = this;
@@ -37,6 +40,8 @@ public class Main extends JavaPlugin {
         RedisConnector redisConnector = redisAPI.getRedisConnector();
         redisConnector.listenForChannel("webChat", new WebChatListener());
 
+        redisConnection = redisConnector.getConnection();
+
         // Start chat generator with random intervals
         ChatGenerator generator = new ChatGenerator();
         generator.runTaskTimer(this, 0, generator.getTime());
@@ -50,6 +55,10 @@ public class Main extends JavaPlugin {
 
     public static Main getInstance() {
         return instance;
+    }
+
+    public Jedis getRedisConnection() {
+        return redisConnection;
     }
 
     private void registerEvents(Listener... listeners) {
