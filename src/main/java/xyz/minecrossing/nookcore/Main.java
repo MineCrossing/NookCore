@@ -17,8 +17,6 @@ import xyz.minecrossing.nookcore.utils.ChatGenerator;
 import xyz.minecrossing.redisapi.RedisAPI;
 import xyz.minecrossing.redisapi.redis.RedisConnector;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Main extends JavaPlugin {
 
     private static Main instance;
@@ -34,6 +32,7 @@ public class Main extends JavaPlugin {
         registerEvents(new GameChatListener(), new WorldListener());
         registerCommands();
 
+        // Create and initialise the redis connection listening to the web chat
         RedisAPI redisAPI = RedisAPI.getRedisAPI();
         redisAPI.initialize();
 
@@ -61,6 +60,11 @@ public class Main extends JavaPlugin {
         return redisConnection;
     }
 
+    /**
+     * Register listeners to hook into Bukkit events
+     *
+     * @param listeners The list of listeners to register
+     */
     private void registerEvents(Listener... listeners) {
         PluginManager pm = Bukkit.getPluginManager();
         for (Listener listener : listeners) {
@@ -68,6 +72,10 @@ public class Main extends JavaPlugin {
         }
     }
 
+    /**
+     * Register user commands with the paper command manager
+     * for better async auto completion.
+     */
     private void registerCommands() {
         PaperCommandManager pcm = new PaperCommandManager(this);
         pcm.registerCommand(new FlyCommand());

@@ -7,6 +7,9 @@ import xyz.minecrossing.coreutilities.Logger;
 import xyz.minecrossing.nookcore.Main;
 import xyz.minecrossing.redisapi.RedisAPI;
 
+/**
+ * Listen for in-game chat messages and send it to redis to publish to Backend
+ */
 public class GameChatListener implements Listener {
 
     @EventHandler

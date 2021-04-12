@@ -10,6 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Generate random chat messages with random names to be sent to Redis and in-game
+ */
 public class ChatGenerator extends BukkitRunnable {
 
     private static final long DELAY = 100;
@@ -24,10 +27,20 @@ public class ChatGenerator extends BukkitRunnable {
         Bukkit.broadcastMessage(result);
     }
 
+    /**
+     * Get the delay between chat messages
+     *
+     * @return The delay between chat messages
+     */
     public long getTime() {
         return DELAY;
     }
 
+    /**
+     * Get a list of example scraped chat messages to use in the chat box
+     *
+     * @return A list of example chat messages
+     */
     public static List<String> getMessages() {
         return Arrays.asList(
                 "Can I have OP?",

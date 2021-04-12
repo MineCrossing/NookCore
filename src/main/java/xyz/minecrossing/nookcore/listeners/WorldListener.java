@@ -21,6 +21,10 @@ import xyz.minecrossing.nookcore.Main;
 import xyz.minecrossing.nookcore.players.MinePlayer;
 import xyz.minecrossing.nookcore.players.PlayerManager;
 
+/**
+ * When a player joins alter their health, food, and gamemode to suite the game.
+ * Manages a lot of world events to control player actions.
+ */
 public class WorldListener implements Listener {
 
     @EventHandler
@@ -36,6 +40,7 @@ public class WorldListener implements Listener {
         int deaths = player.getStatistic(Statistic.DEATHS);
         int logins = player.getStatistic(Statistic.LEAVE_GAME) + 1;
 
+        // Save the player's into the database.
         Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
             PlayerManager.savePlayer(new MinePlayer(player.getUniqueId(), player.getName(), time, level, kills, deaths, 0, 0, logins, 0));
         });

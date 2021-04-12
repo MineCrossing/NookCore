@@ -12,6 +12,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class PlayerManager {
 
+    /**
+     * Save a player to the database
+     *
+     * @param player The player to save
+     */
     public static void savePlayer(MinePlayer player) {
         String sql = "INSERT INTO players (uuid, name, time, level, kills, deaths, wins, losses, logins, quests) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
@@ -39,6 +44,12 @@ public class PlayerManager {
         }
     }
 
+    /**
+     * Create a player with a name and a set of random statistics
+     *
+     * @param name The name of the player
+     * @return The randomised player
+     */
     public static MinePlayer randomPlayer(String name) {
         int time = ThreadLocalRandom.current().nextInt(500_000);
         int level = ThreadLocalRandom.current().nextInt(100);
@@ -63,6 +74,11 @@ public class PlayerManager {
         );
     }
 
+    /**
+     * Get a list of example random usernames
+     *
+     * @return A list of random usernames
+     */
     public static List<String> getNames() {
         String names = "mossyresult\n" +
                 "arthropodsturban\n" +
